@@ -11,8 +11,8 @@ features = ["", ""]
 min_version = 0.14
 
 [author]
-  name = "Thibault NORMAND"
-  homepage = "http://zenithar.org"
+  name = "Mark Needham"
+  homepage = "http://www.markhneedham.com"
 
 # If porting an existing theme
 [original]

@@ -8,10 +8,10 @@
             {{ .Date.Format "2 Jan 2006" }}
         </time>
         <span class="taglist">
-        {{if .Params.tags }}
+        {{if .Params.tag }}
         &middot;
-        {{ range $index, $tag := .Params.tags }}
-            <a href="{{ $baseurl }}tags/{{ $tag | urlize }}/">{{ $tag }}</a>
+        {{ range $index, $tag := .Params.tag }}
+            <a href="{{ $baseurl }}tag/{{ $tag | urlize }}/">{{ $tag }}</a>
         {{ end }}
         {{ end }}
         </span>

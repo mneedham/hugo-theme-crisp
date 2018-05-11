@@ -1,12 +1,9 @@
-<div id="related">
-  <section>
-    <h5>Pour un peu plus de lecture ...</h5>
-    <ul>
-      {{ range first 5 .RelatedPages }}
-      <li>
-        <a href="{{ .Permalink }}">{{ .Title }} - {{ .ReadingTime }} Minutes</a>
-      </li>
-      {{ end }}
-    </ul>
-  </section>
-</div>
+{{ $related := .Site.RegularPages.Related . | first 5 }}
+{{ with $related }}
+<h3>See Also</h3>
+<ul>
+	{{ range . }}
+	<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+	{{ end }}
+</ul>
+{{ end }}

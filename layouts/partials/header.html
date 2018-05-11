@@ -20,7 +20,11 @@
         <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:title" content="{{ .Title }}" />
-        <meta name="twitter:description" content="{{ .Description }}" />
+        {{ if .Description }}
+          <meta name="twitter:description" content="{{ .Description }}" />
+        {{ else }}
+          <meta name="twitter:description" content="{{ .Summary }}" />
+        {{ end }}
         <meta name="twitter:url" content="{{ .Permalink }}" />
     {{ else }}
         <meta property="og:type" content="website" />
@@ -31,7 +35,7 @@
     {{ if .Description }}
         <meta name="description" content="{{ .Description }}" />
     {{ else }}
-        <meta name="description" content="{{ .Site.Params.description }}" />
+        <meta name="description" content="{{ .Summary }}" />
     {{ end }}
 
         <meta name="p:domain_verify" content="fc173d84e3a4de948ed4bda2908afd3e"/>
@@ -65,7 +69,7 @@
             "name": "http://profiles.google.com/{{ .Site.Params.gplus }}?rel=author"
         },
         "datePublished": "{{ .Date.Format "2006-01-02" }}",
-        "description": "{{ .Description }}",
+        "description": "{{ .Summary }}",
         "wordCount": {{ .WordCount }}
     }
     </script>
@@ -80,5 +84,5 @@
             <p>{{.Description}}</p>
 
             {{ partial "follow.html" . }}
-            {{ partial "navigation.html" . }}
+            {{ partial "navigation.html" . }}            
         </header>

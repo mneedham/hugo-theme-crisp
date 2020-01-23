@@ -16,7 +16,7 @@
         {{ range .Params.tag }}<meta property="og:article:tag" content="{{ . }}" />
         {{ end }}
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:creator" content="@{{ .Site.Params.twitter }}" />
         <meta name="twitter:title" content="{{ .Title }}" />
@@ -26,6 +26,14 @@
           <meta name="twitter:description" content="{{ .Summary }}" />
         {{ end }}
         <meta name="twitter:url" content="{{ .Permalink }}" />
+
+      {{ if .Params.image }}
+        {{ $baseurl := .Site.BaseURL }}
+        <meta name="og:image" content="{{$baseurl}}/{{ .Params.image }}" />
+        <meta name="twitter:image:src" content="{{$baseurl}}/{{ .Params.image }}" />
+        <meta name="twitter:image" content="{{$baseurl}}/{{ .Params.image }}" />
+      {{ end }}
+
     {{ else }}
         <meta property="og:type" content="website" />
     {{ end }}
